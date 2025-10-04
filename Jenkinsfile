@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhubb') // Jenkins credentials ID
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
     IMAGE_TAG = "${BUILD_NUMBER}"
   }
@@ -41,7 +41,7 @@ pipeline {
       echo "✅ Docker image pushed successfully: ${DOCKERHUB_REPO}:${IMAGE_TAG}"
     }
     failure {
-      echo "❌ Pipeline failed. Check logs for detailsss."
+      echo "❌ Pipeline failed. Check logs for detailssss."
     }
   }
 }
