@@ -41,7 +41,7 @@ pipeline {
       echo "✅ Docker image pushed successfully: ${DOCKERHUB_REPO}:${IMAGE_TAG}"
     }
     failure {
-      echo "❌ Pipeline failed. Check logs for detailsssssss."
+      echo "❌ Pipeline failed. Check logs for detailsss."
     }
   }
 }
