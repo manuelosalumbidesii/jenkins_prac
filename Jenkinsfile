@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
-    IMAGE_TAG = "${BUILD_NUMBER}"
+    VERSION_TAG = "v${BUILD_NUMBER}"
   }
 
   stages {
@@ -30,7 +30,7 @@ pipeline {
 
     stage('Push Docker Image') {
       steps {
-        sh 'docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}'
+        sh 'docker push ${DOCKERHUB_REPO}:${VERSION_TAG}'
         sh 'docker push ${DOCKERHUB_REPO}:latest'
       }
     }
