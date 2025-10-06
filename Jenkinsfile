@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
-    VERSION_TAG = "v${BUILD_NUMBER}"
+    VERSION_TAG = "v${BUILD_NUMBER}" // Dynamic version tag: v1, v2, v3...
   }
 
   stages {
@@ -17,8 +17,8 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} .'
-        sh 'docker tag ${DOCKERHUB_REPO}:${IMAGE_TAG} ${DOCKERHUB_REPO}:latest'
+        sh 'docker build -t ${DOCKERHUB_REPO}:${VERSION_TAG} .'
+        sh 'docker tag ${DOCKERHUB_REPO}:${VERSION_TAG} ${DOCKERHUB_REPO}:latest'
       }
     }
 
@@ -38,7 +38,7 @@ pipeline {
 
   post {
     success {
-      echo "✅ Docker image pushed successfully: ${DOCKERHUB_REPO}:${IMAGE_TAG}"
+      echo "✅ Docker image pushed successfully: ${DOCKERHUB_REPO}:${VERSION_TAG}"
     }
     failure {
       echo "❌ Pipeline failed. Check logs for details."
