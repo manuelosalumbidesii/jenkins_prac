@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
