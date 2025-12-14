@@ -1,9 +1,9 @@
 pipeline {
   agent any
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Jenkins credentials ID
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub') 
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
-    VERSION_TAG = "v${BUILD_NUMBER}" // Dynamic version tag: v1, v2, v3...
+    VERSION_TAG = "v${BUILD_NUMBER}" // Dynamic version 
   }
 
   stages {
