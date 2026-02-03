@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub') 
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds') 
     DOCKERHUB_REPO = "ivosalumbides/jenkins_prac"
     VERSION_TAG = "v${BUILD_NUMBER}" // Dynamic version 
   }
@@ -40,7 +40,7 @@ pipeline {
       echo "✅ Docker image pushed successfully: ${DOCKERHUB_REPO}:${VERSION_TAG}"
     }
     failure {
-      echo "❌ Pipeline failed. Check logs for detailsssss."
+      echo "❌ Pipeline failed. Check logs for detailss."
     }
   }
 }
